@@ -2,12 +2,8 @@
  *  A framebuffer animation daemon
  *
  *  Copyright (C) 2012 Alexander Lukichev
+ *  Modified & (C) 2021 for V+ Publicidad SpA
  *
- *  Alexander Lukichev <alexander.lukichev@gmail.com>
- *
- *  This program is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU General Public License
- *  version 2 as published by the Free Software Foundation.
  */
 
 #include <errno.h>
@@ -182,12 +178,12 @@ static int daemonify(void)
 static void free_resources(void)
 {
 	fb_close(&_Fb, !PreserveMode);
-	LOG(LOG_INFO, "exited");
+	/*LOG(LOG_INFO, "exited");*/
 }
 
 static void sig_handler(int num)
 {
-	LOG(LOG_INFO, "signal %d caught", num);
+	/*LOG(LOG_INFO, "signal %d caught", num);*/
 	exit(0);
 }
 
@@ -280,7 +276,7 @@ int main(int argc, char **argv) {
 
 	if (init(argc, argv, &banner))
 		return 1;
-	LOG(LOG_INFO, "started");
+	/*LOG(LOG_INFO, "started");*/
 
 	if (PipePath)
 		rc = commands_fifo(PipePath, &banner);
